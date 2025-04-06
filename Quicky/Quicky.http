@@ -1,4 +1,4 @@
-@Quicky_HostAddress = http://localhost:5075
+@Quicky_HostAddress = http://localhost:5076
 
 GET {{Quicky_HostAddress}}/weatherforecast/
 Accept: application/json

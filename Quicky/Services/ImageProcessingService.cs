@@ -1,9 +1,10 @@
 using System.Drawing;
 using System.Drawing.Imaging;
+using Quickly.Contracts;
 
 namespace Quickly.Services;
 
-public class ImageProcessingService
+public class ImageProcessingService : IImageProcessingService
 {
     public MemoryStream ProcessingImage(MemoryStream imageStream)
     {

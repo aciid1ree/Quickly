@@ -3,6 +3,7 @@ using Quicky.Models;
 
 namespace Quickly.Controllers;
 
+[Route("api/[controller]")]
 [ApiController]
 public class BumpController : ControllerBase
 {

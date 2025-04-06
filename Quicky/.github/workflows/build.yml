@@ -1,0 +1,33 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  
+
+      - name: Set up Google Cloud credentials
+        run: echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > /tmp/google-cloud-service-account.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
+
+      - name: Install Google Cloud SDK
+        run: |
+          curl https://sdk.cloud.google.com | bash
+          source $HOME/google-cloud-sdk/path.bash.inc
+          gcloud --version
+
+      - name: Authenticate with Google Cloud
+        run: gcloud auth activate-service-account --key-file /tmp/google-cloud-service-account.json
+
+      - name: Deploy to Google Cloud
+        run: |
+          # Добавьте вашу команду для деплоя, например:
+          gcloud app deploy
