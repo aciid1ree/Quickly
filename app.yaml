@@ -1,0 +1,9 @@
+runtime: aspnetcore
+env: flex
+
+env_variables:
+  ASPNETCORE_ENVIRONMENT: "Production"
+
+handlers:
+  - url: /static
+    static_dir: wwwroot
